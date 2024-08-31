@@ -29,7 +29,7 @@ modfier|appearance|description
 `*`|$^*$|zero or more (repetition)
 `+`|$^+$|one or more
 `?`|$^?$|zero or one (optional)
-`{*\#}`|$^{*\#}$|zero or more, separated by commas (trailing comma not allowed)
-`{+\#}`|$^{+\#}$|one or more, separated by commas (trailing comma not allowed)
+`{*\#}`|$^{*\#}$|zero or more, separated by commas (trailing comma allowed)
+`{+\#}`|$^{+\#}$|one or more, separated by commas (trailing comma allowed)
 
 Whitespace in the metasyntax and in the defined language is insignificant and cannot be matched.

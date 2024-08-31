@@ -1,18 +1,19 @@
 $$
 \begin{align*}
 
-&⟨syntax⟩ \to ⟨\_nl⟩ mdMath ⟨\_nl⟩ alignL ⟨\_nl⟩ \begin{pmatrix} ⟨\_nl⟩ mdMath ⟨\_nl⟩
+&⟨syntax⟩ \to ⟨.nl⟩ mdMath ⟨.nl⟩ alignL \begin{pmatrix}
+    ⟨.nl⟩ mdMath ⟨.nl⟩
     ⟨topLevelElement⟩
-    ⟨\_nl⟩
-\end{pmatrix}^* alignR ⟨\_nl⟩
+\end{pmatrix}^*
+⟨.nl⟩ alignR ⟨.nl⟩
 \\
-&⟨topLevelElement⟩ \to amp ⟨\_⟩ \begin{Bmatrix*}[l]
+&⟨topLevelElement⟩ \to amp ⟨.⟩ \begin{Bmatrix*}[l]
     header \\
     ⟨rule⟩ \\
 \end{Bmatrix*}
 \\
-&⟨rule⟩ \to ruleName ⟨\_⟩ to \begin{pmatrix}
-    ⟨\_⟩
+&⟨rule⟩ \to ruleName ⟨.⟩ to \begin{pmatrix}
+    ⟨.⟩
     ⟨item⟩
 \end{pmatrix}^+
 \\
@@ -23,57 +24,62 @@ $$
     ruleName \\
     ⟨terminal⟩ \\
 \end{Bmatrix*} \begin{pmatrix}
-    ⟨\_⟩
+    ⟨.⟩
     ⟨quantifier⟩
 \end{pmatrix}^?
 \\
-&⟨cases⟩ \to casesL ⟨\_⟩ \begin{pmatrix}
+&⟨cases⟩ \to casesL ⟨.⟩ ⟨case⟩ \begin{pmatrix}
+    ⟨.nl.⟩
     ⟨case⟩
-    nl
-    ⟨\_⟩
-\end{pmatrix}^+ casesR
+\end{pmatrix}^*
+⟨.nl.⟩^?
+casesR
 \\
 &⟨case⟩ \to \begin{Bmatrix*}[l]
-    ⟨rule⟩ ⟨\_⟩ \\
-    \begin{pmatrix}⟨item⟩ ⟨\_⟩\end{pmatrix}^+ \\
+    ⟨rule⟩ ⟨.⟩ \\
+    \begin{pmatrix}⟨item⟩ ⟨.⟩\end{pmatrix}^+ \\
 \end{Bmatrix*}
 \\
-&⟨group⟩ \to groupL ⟨\_⟩ \begin{pmatrix}
+&⟨group⟩ \to groupL ⟨.⟩ \begin{pmatrix}
     ⟨item⟩
-    ⟨\_⟩
+    ⟨.⟩
 \end{pmatrix}^* groupR
 \\
-&⟨split⟩ \to splitL ⟨\_⟩ \begin{pmatrix}
-    amp ⟨\_⟩
-    \begin{pmatrix}
-        ⟨item⟩
-        ⟨\_⟩
-    \end{pmatrix}^+
-    nl
-    ⟨\_⟩
-\end{pmatrix}^+ splitR
+&⟨split⟩ \to splitL ⟨.⟩ ⟨split.item⟩ \begin{pmatrix}
+    ⟨.nl.⟩
+    ⟨split.item⟩
+\end{pmatrix}^*
+⟨.nl.⟩^?
+splitR
+\\
+&⟨split.item⟩ \to amp \begin{pmatrix}
+    ⟨.⟩
+    ⟨item⟩
+\end{pmatrix}^+
 \\
 &⟨terminal⟩ \to \begin{Bmatrix*}[l]
     text \\
     tokenName \\
 \end{Bmatrix*}
 \\
-&⟨quantifier⟩ \to caret ⟨\_⟩ ⟨quantifierSup⟩
+&⟨quantifier⟩ \to caret ⟨.⟩ ⟨quantifierSup⟩
 \\
 &⟨quantifierSup⟩ \to \begin{Bmatrix*}[l]
     zeroOrOne \\
     zeroOrMore \\
     oneOrMore \\
-    braceL ⟨\_⟩ zeroOrMore ⟨\_⟩ csl ⟨\_⟩ braceR \\
-    braceL ⟨\_⟩ oneOrMore ⟨\_⟩ csl ⟨\_⟩ braceR \\
+    braceL ⟨.⟩ zeroOrMore ⟨.⟩ csl ⟨.⟩ braceR \\
+    braceL ⟨.⟩ oneOrMore ⟨.⟩ csl ⟨.⟩ braceR \\
 \end{Bmatrix*}
 \\
-&⟨\_⟩ \to ws^*
+&⟨.⟩ \to ws^*
 \\
-&⟨\_nl⟩ \to \begin{Bmatrix*}[l]
+&⟨.nl⟩ \to \begin{Bmatrix*}[l]
     nl \\
     ws \\
 \end{Bmatrix*}^*
+\\
+&⟨.nl.⟩ \to ws^* nl\ ws^*
 
 \end{align*}
 $$
