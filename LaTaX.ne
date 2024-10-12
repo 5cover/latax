@@ -3,7 +3,6 @@
 const moo = require("moo");
 
 const lexer = moo.compile({
-    mdMath: '$$',
     nl: /\\\\/,
     ws: {match: /\\ |\s/, lineBreaks: true},
     amp: '&',
@@ -33,7 +32,7 @@ const lexer = moo.compile({
 @lexer lexer
 
 syntax ->
-    _nl %mdMath _nl %alignL _nl (topLevelElement _nl):* %alignR _nl %mdMath _nl
+    _nl %alignL _nl (topLevelElement _nl):* %alignR _nl
 
 topLevelElement ->
     %amp _ (%header | rule)
@@ -64,12 +63,14 @@ quantifier ->
     %caret _ quantifierSup
 
 quantifierSup -> %zeroOrOne
-             | %zeroOrMore
-             | %oneOrMore
-             | %braceL _ %zeroOrMore _ %csl _ %braceR
-             | %braceL _ %oneOrMore _ %csl _ %braceR
+               | %zeroOrMore
+               | %oneOrMore
+               | %braceL _ %zeroOrMore _ %csl _ %braceR
+               | %braceL _ %oneOrMore _ %csl _ %braceR
 
+# Whitespace
 _ -> %ws:*
 {%d=>null%}
+# Whitespace or newlines
 _nl -> (%nl | %ws):*
 {%d=>null%}

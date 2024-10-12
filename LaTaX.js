@@ -6,7 +6,6 @@ function id(x) { return x[0]; }
 const moo = require("moo");
 
 const lexer = moo.compile({
-    mdMath: '$$',
     nl: /\\\\/,
     ws: {match: /\\ |\s/, lineBreaks: true},
     amp: '&',
@@ -37,7 +36,7 @@ var grammar = {
     {"name": "syntax$ebnf$1", "symbols": []},
     {"name": "syntax$ebnf$1$subexpression$1", "symbols": ["topLevelElement", "_nl"]},
     {"name": "syntax$ebnf$1", "symbols": ["syntax$ebnf$1", "syntax$ebnf$1$subexpression$1"], "postprocess": function arrpush(d) {return d[0].concat([d[1]]);}},
-    {"name": "syntax", "symbols": ["_nl", (lexer.has("mdMath") ? {type: "mdMath"} : mdMath), "_nl", (lexer.has("alignL") ? {type: "alignL"} : alignL), "_nl", "syntax$ebnf$1", (lexer.has("alignR") ? {type: "alignR"} : alignR), "_nl", (lexer.has("mdMath") ? {type: "mdMath"} : mdMath), "_nl"]},
+    {"name": "syntax", "symbols": ["_nl", (lexer.has("alignL") ? {type: "alignL"} : alignL), "_nl", "syntax$ebnf$1", (lexer.has("alignR") ? {type: "alignR"} : alignR), "_nl"]},
     {"name": "topLevelElement$subexpression$1", "symbols": [(lexer.has("header") ? {type: "header"} : header)]},
     {"name": "topLevelElement$subexpression$1", "symbols": ["rule"]},
     {"name": "topLevelElement", "symbols": [(lexer.has("amp") ? {type: "amp"} : amp), "_", "topLevelElement$subexpression$1"]},

@@ -1,0 +1,27 @@
+{
+  "name": "latax",
+  "version": "1.0.0",
+  "description": "LaTeX-based meta-language.",
+  "main": "LaTaX.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/5cover/latax.git"
+  },
+  "keywords": [
+    "metasyntax",
+    "grammar"
+  ],
+  "author": "Scover",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/5cover/latax/issues"
+  },
+  "homepage": "https://github.com/5cover/latax#readme",
+  "dependencies": {
+    "moo": "^0.5.2",
+    "nearley": "^2.20.1"
+  }
+}
